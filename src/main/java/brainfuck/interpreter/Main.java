@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 public class Main {
 
     public static void main(String[] args) {
-        String excl = "----[-->+++<]>-.--[->+++<]>..[--->+<]>---.";
+        String excl = "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>-----------.++++++++++++..+++++++++++++++.<<++.>+++++++.>-------------------.+++++++++++++.---.------.+++++++++++++.<<+.";
 
         try {
             BfInterpreter interpreter = new BfInterpreter(excl);
