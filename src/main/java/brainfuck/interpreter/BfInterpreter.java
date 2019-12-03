@@ -14,7 +14,7 @@ public class BfInterpreter {
     private byte[] memory;
     private Scanner sc;
 
-    public final int MAX_SIZE = 65535;
+    public final int MAX_SIZE = 65535; // predefined max size for the array
 
     public BfInterpreter(String code) throws Exception {
         if (code == null) {
@@ -29,6 +29,7 @@ public class BfInterpreter {
     public void interpret() {
         int pointer = 0;
         for (int i = 0; i < this.code.length; i++) {
+            // System.out.println("char is now " + this.code[i]);
             switch (this.code[i]) {
             case '+':
                 memory[pointer]++;
@@ -48,11 +49,35 @@ public class BfInterpreter {
             case ',':
                 memory[pointer] = sc.next().trim().getBytes()[0];
                 break;
-            case '[': // als de memory[pointer] 0 is, spring naar de plek na de volgende ] ipv een vooruit
-                    
-                break;
-            case ']': // als de memory[pointer] niet 0 is, spring terug naar de plek voor de vorige [ ipv een vooruit
+            case '[': // als de memory[pointer] 0 is, spring naar de plek na de volgende ] ipv een
+                      // vooruit
+                int endLoopPos = i;
+                // search for next ']'
+                while (code[endLoopPos] != ']') {
+                    // keep incrementing until end of loop is found
+                    endLoopPos++;
+                }
+                if (memory[pointer] == 0) {
+                    i = endLoopPos + 1;
+                } else {
+                    pointer++;
+                }
 
+                break;
+            case ']': // als de memory[pointer] niet 0 is, spring terug naar de plek voor de vorige [
+                      // ipv een vooruit
+                int beginLoopPos = i;
+                // search for previous '['
+                while (code[beginLoopPos] != '[') {
+                    // keep decrementing until begin of loop is found
+                    beginLoopPos--;
+                }
+
+                if (memory[pointer] != 0) {
+                    i = beginLoopPos + 1;
+                } else {
+                    pointer++;
+                }
                 break;
 
             default:
