@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - JavaFXExample",
+            "request": "launch",
+            "mainClass": "examples.JavaFXExample",
+            "projectName": "BrainfuckInterpreter"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "brainfuck.interpreter.Main",

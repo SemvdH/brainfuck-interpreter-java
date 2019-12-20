@@ -36,5 +36,8 @@ hs_err_pid*
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+.idea/**
+target/**
 
 # End of https://www.gitignore.io/api/visualstudiocode
+BrainfuckInterpreter.iml
