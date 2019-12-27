@@ -35,7 +35,7 @@ public class BfInterpreter {
     public void setCodeFromFile(String fileName) throws IOException, NullPointerException {
         String res = "";
 
-        FileInputStream fis = new FileInputStream("src/main/java/resources/" + fileName);
+        FileInputStream fis = new FileInputStream(fileName);
         code = IOUtils.toString(fis, "UTF-8");
         // System.out.println("code is: " + code);
 
@@ -102,131 +102,6 @@ public class BfInterpreter {
         }
         sc.close();
 
-    }
-
-    public void interpretAgain(String code) {
-        final int LENGTH = 65535;
-        byte[] mem = new byte[LENGTH];
-        int dataPointer = 0;
-        int l = 0;
-        for (int i = 0; i < code.length(); i++) {
-            if (code.charAt(i) == '>') {
-                dataPointer = (dataPointer == LENGTH - 1) ? 0 : dataPointer + 1;
-            } else if (code.charAt(i) == '<') {
-                dataPointer = (dataPointer == 0) ? LENGTH - 1 : dataPointer - 1;
-            } else if (code.charAt(i) == '+') {
-                mem[dataPointer]++;
-            } else if (code.charAt(i) == '-') {
-                mem[dataPointer]--;
-            } else if (code.charAt(i) == '.') {
-                System.out.print((char) mem[dataPointer]);
-            } else if (code.charAt(i) == ',') {
-                mem[dataPointer] = (byte) sc.next().charAt(0);
-            } else if (code.charAt(i) == '[') {
-                if (mem[dataPointer] == 0) {
-                    i++;
-                    while (l > 0 || code.charAt(i) != ']') {
-                        if (code.charAt(i) == '[')
-                            l++;
-                        if (code.charAt(i) == ']')
-                            l--;
-                        i++;
-                    }
-                }
-            } else if (code.charAt(i) == ']') {
-                if (mem[dataPointer] != 0) {
-                    i--;
-                    while (l > 0 || code.charAt(i) != '[') {
-                        if (code.charAt(i) == ']')
-                            l++;
-                        if (code.charAt(i) == '[')
-                            l--;
-                        i--;
-                    }
-                    i--;
-                }
-            }
-        }
-    }
-
-    @Deprecated
-    public void interpretSwitch() {
-        int pointer = 0;
-        int c = 0;
-        for (int i = 0; i < codeArray.length; i++) {
-
-            switch (this.codeArray[i]) {
-            case '+':
-                memory[pointer]++;
-                break;
-            case '-':
-                memory[pointer]--;
-                break;
-            case '>':
-                pointer++;
-                break;
-            case '<':
-                pointer--;
-                break;
-            case '.':
-                System.out.print(String.valueOf((char) memory[pointer]));
-                break;
-            case ',':
-                memory[pointer] = sc.next().trim().getBytes()[0];
-                break;
-            case '[':
-
-                if (memory[pointer] == 0) {
-                    i++;
-                    while (c > 0 || this.codeArray[i] != ']') {
-                        if (this.codeArray[i] == '[') {
-                            c++;
-                        } else if (this.codeArray[i] == ']') {
-                            c--;
-                        }
-                        i++;
-                    }
-                }
-                // int endLoopPos = i;
-                // // search for next ']'
-                // while (code[endLoopPos] != ']') {
-                // // keep incrementing until end of loop is found
-                // endLoopPos++;
-                // }
-                // if (memory[pointer] == 0) {
-                // i = endLoopPos + 1;
-                // }
-                break;
-            case ']':
-
-                if (memory[pointer] != 0) {
-                    i--;
-                    while (c > 0 || this.codeArray[i] == '[') {
-                        if (this.codeArray[i] == ']') {
-                            c++;
-                        } else if (this.codeArray[i] == '[') {
-                            c--;
-                        }
-                        i--;
-                    }
-                    i--;
-                }
-                // int beginLoopPos = i;
-                // // search for previous '['
-                // while (code[beginLoopPos] != '[') {
-                // // keep decrementing until begin of loop is found
-                // beginLoopPos--;
-                // }
-
-                // if (memory[pointer] != 0) {
-                // i = beginLoopPos;
-                // }
-                break;
-
-            default:
-                break;
-            }
-        }
     }
 
 }
