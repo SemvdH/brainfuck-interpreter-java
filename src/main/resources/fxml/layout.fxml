@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -9,7 +11,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brainfuck.gui.Controller">
    <children>
-      <MenuBar fx:id="menuBar" layoutY="2.0">
+      <MenuBar fx:id="menuBar">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -18,5 +20,17 @@
           </Menu>
         </menus>
       </MenuBar>
+      <TextArea fx:id="textinput" layoutX="124.0" layoutY="182.0" prefHeight="317.0" prefWidth="357.0" promptText="enter text" styleClass="textbox" wrapText="true">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="textoutput" editable="false" layoutX="637.0" layoutY="182.0" prefHeight="317.0" prefWidth="357.0" styleClass="textbox" wrapText="true">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="interpretButton" layoutX="418.0" layoutY="499.0" mnemonicParsing="false" text="Interpret" />
+      <Button fx:id="loadButton" layoutX="124.0" layoutY="499.0" mnemonicParsing="false" text="Load from file" />
    </children>
 </AnchorPane>

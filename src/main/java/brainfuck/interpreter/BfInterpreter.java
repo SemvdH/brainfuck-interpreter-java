@@ -41,8 +41,9 @@ public class BfInterpreter {
 
     }
 
-    public void interpret() {
+    public String interpret() {
         int loop = 0;
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < code.length(); i++) {
             // System.out.println("char is now " + this.code.charAt(i));
 
@@ -64,6 +65,7 @@ public class BfInterpreter {
                 // System.out.println("printing");
                 // output the value in the array
                 System.out.print((char) memory[pointer]);
+                result.append((char) memory[pointer]);
             } else if (code.charAt(i) == ',') {
                 // the next value in the array is the next input character
                 // System.out.println("input");
@@ -101,6 +103,7 @@ public class BfInterpreter {
 
         }
         sc.close();
+        return result.toString();
 
     }
 

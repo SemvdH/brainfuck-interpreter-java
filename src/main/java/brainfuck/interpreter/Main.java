@@ -20,11 +20,14 @@ public class Main extends Application {
         launch(Main.class);
 
     }
+    //TODO change alert style
 
     @Override
     public void start(Stage stage) throws Exception {
         Parent pane = FXMLLoader.load(getClass().getResource("/fxml/layout.fxml"));
         Scene scene = new Scene(pane);
+        scene.getStylesheets().add("/css/menuBar.css");
+        scene.getStylesheets().add("/css/stylesheet.css");
         stage.setTitle("Brainfuck Interpreter");
         stage.setScene(scene);
         stage.show();
