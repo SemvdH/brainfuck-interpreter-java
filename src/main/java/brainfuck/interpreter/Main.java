@@ -18,14 +18,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         String excl = ">,[[----------[                    >>>[>>>>]+[[-]+<[->>>>++>>>>+[>>>>]++[->+<<<<<]]<<<]                    ++++++[>------<-]>--[>>[->>>>]+>+[<<<<]>-],<                ]>            ]>>>++>+>>[                <<[>>>>[-]+++++++++<[>-<-]+++++++++>[-[<->-]+[<<<<]]<[>+<-]>]                >[>[>>>>]+[[-]<[+[->>>>]>+<]>[<+>[<<<<]]+<<<<]>>>[->>>>]+>+[<<<<]]                >[[>+>>[<<<<+>>>>-]>]<<<<[-]>[-<<<<]]>>>>>>>            ]>>+[[-]++++++>>>>]<<<<[[<++++++++>-]<.[-]<[-]<[-]<]<,        ]";
         launch(Main.class);
-        // try {
-        //     BfInterpreter interpreter = new BfInterpreter(",.");
-        //     interpreter.setCodeFromFile("mandelbrot-tiny.bf");
-        //     interpreter.interpret();
-        //     // interpreter.interpretAgain(excl);
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
 
     }
 
@@ -33,6 +25,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent pane = FXMLLoader.load(getClass().getResource("/fxml/layout.fxml"));
         Scene scene = new Scene(pane);
+        stage.setTitle("Brainfuck Interpreter");
         stage.setScene(scene);
         stage.show();
 
