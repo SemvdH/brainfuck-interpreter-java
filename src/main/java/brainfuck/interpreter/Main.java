@@ -14,6 +14,7 @@ import javafx.stage.Stage;
  * Main
  */
 public class Main extends Application {
+    private Stage stage;
 
     public static void main(String[] args) {
         String excl = ">,[[----------[                    >>>[>>>>]+[[-]+<[->>>>++>>>>+[>>>>]++[->+<<<<<]]<<<]                    ++++++[>------<-]>--[>>[->>>>]+>+[<<<<]>-],<                ]>            ]>>>++>+>>[                <<[>>>>[-]+++++++++<[>-<-]+++++++++>[-[<->-]+[<<<<]]<[>+<-]>]                >[>[>>>>]+[[-]<[+[->>>>]>+<]>[<+>[<<<<]]+<<<<]>>>[->>>>]+>+[<<<<]]                >[[>+>>[<<<<+>>>>-]>]<<<<[-]>[-<<<<]]>>>>>>>            ]>>+[[-]++++++>>>>]<<<<[[<++++++++>-]<.[-]<[-]<[-]<]<,        ]";
@@ -24,6 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        this.stage = stage;
         Parent pane = FXMLLoader.load(getClass().getResource("/fxml/layout.fxml"));
         Scene scene = new Scene(pane);
         scene.getStylesheets().add("/css/menuBar.css");
@@ -32,5 +34,9 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 }

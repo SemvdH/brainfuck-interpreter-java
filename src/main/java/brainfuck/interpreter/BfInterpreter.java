@@ -1,7 +1,10 @@
 package brainfuck.interpreter;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import org.apache.commons.io.IOUtils;
@@ -36,9 +39,14 @@ public class BfInterpreter {
         String res = "";
 
         FileInputStream fis = new FileInputStream(fileName);
-        code = IOUtils.toString(fis, "UTF-8");
+        code = IOUtils.toString(fis, StandardCharsets.UTF_8);
         // System.out.println("code is: " + code);
 
+    }
+
+    public void setCodeFromFile(File file) throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(file);
+        code = IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
     }
 
     public String interpret() {
