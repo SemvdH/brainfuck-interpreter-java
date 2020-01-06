@@ -5,7 +5,7 @@
     <groupId>brainfuck.interpreter</groupId>
     <artifactId>BrainfuckInterpreter</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0a</version>
     <name>BrainfuckInterpreter</name>
     <url>http://maven.apache.org</url>
 
@@ -47,6 +47,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -55,6 +56,42 @@
                     <mainClass>brainfuck.interpreter.Main</mainClass>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>false</downloadJavadocs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>brainfuck.interpreter.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
 
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>
@@ -69,7 +106,7 @@
                         </goals>
                         <configuration>
                             <headerType>gui</headerType>
-                            <jar>${project.build.directory}/${artifactId}-${version}-shaded.jar</jar>
+                            <jar>${project.build.directory}/BrainfuckInterpreter-1.0a-jar-with-dependencies.jar</jar>
                             <outfile>${project.build.directory}/brainfuck-interpreter.exe</outfile>
                             <downloadUrl>http://java.com/download</downloadUrl>
                             <classPath>
@@ -77,7 +114,7 @@
                                 <preCp>anything</preCp>
                             </classPath>
                             <icon>src/main/resources/icon/icon.ico</icon>
-<!--                            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
+                            <!--                            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
                             <jre>
                                 <minVersion>1.8.0</minVersion>
                                 <jdkPreference>preferJre</jdkPreference>
