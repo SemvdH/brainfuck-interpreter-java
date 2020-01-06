@@ -1,22 +1,29 @@
 * {
     -fx-font-family: "Consolas";
-    -fx-font-size: 14px;
+
     -fx-background-color: rgb(47, 45, 54);
     -fx-button-color: rgb(12, 158, 126);
 
 }
 
+.textValue {
+    -fx-font-size: 14px;
+}
+
 .button {
     -fx-background-color: -fx-button-color;
+    -fx-font-size: 14px;
 }
 
 .textbox {
     -fx-text-fill: rgb(33, 189, 33);
+    -fx-font-size: 14px;
 }
 
 .textbox .content {
     -fx-background-color: rgb(43, 43, 43);
     -fx-text-fill: rgb(33, 189, 33);
+    -fx-font-size: 14px;
 }
 
 
@@ -25,6 +32,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 0.833em;
+
     /* 10 */
 }
 
@@ -41,4 +49,12 @@
     -fx-font-size: 14px;
     -fx-padding: 0.833em 0 0 0.833em;
     /* 10px 0px 0px 10px */
+}
+.title {
+    -fx-font-size: 50;
+}
+
+.credits {
+    -fx-font-size: 11;
+
 }

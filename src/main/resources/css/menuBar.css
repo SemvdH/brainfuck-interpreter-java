@@ -1,6 +1,6 @@
 /* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted, the rest is copy-paste */
 * {
-    -fx-my-menu-color: #727374;                  /* Change according to your needs */
+    -fx-my-menu-color: #727374;                  /* #727374*/
     -fx-my-menu-color-highlighted: #2a3b42;      /* Change according to your needs */
     -fx-my-menu-font-color: #FFFFFF;             /* Change according to your needs */
     -fx-my-menu-font-color-highlighted: #FFFFFF; /* Change according to your needs */
@@ -50,6 +50,7 @@
 /*** The item's label (not hovered / focused) ***/   
 .menu-item .label {
     -fx-text-fill: -fx-my-menu-font-color;
+    -fx-background-color: -fx-my-menu-color;
 }
 
 /*** The item's label (disabled) ***/   
@@ -58,12 +59,12 @@
 }    
 
 /*** The item itself (hovered / focused) ***/    
-.menu-item:focused, .menu-item:hovered {
-    -fx-background-color: -fx-my-menu-color-highlighted; 
+.menu-item:focused, .menu-item:hover {
+    -fx-background-color: -fx-my-menu-color-highlighted;
 }
 
-/*** The item's label (hovered / focused) ***/  
-.menu-item:focused .label, .menu-item:hovered .label {
+/*** The item's label (hovered / focused) ***/
+.menu-item:focused .label, .menu-item:hover .label {
     -fx-text-fill: -fx-my-menu-font-color-highlighted;
 }
 

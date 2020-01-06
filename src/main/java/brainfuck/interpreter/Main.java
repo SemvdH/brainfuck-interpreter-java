@@ -22,7 +22,7 @@ public class Main extends Application {
 
     }
     //TODO change alert style
-
+ 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
